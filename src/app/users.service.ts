@@ -6,8 +6,8 @@ import {Observable } from 'rxjs/observable';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/catch';
 import { User } from './user';
-import { Http } from '@angular/http';
-import { UrlHandlingStrategy } from '@angular/router';
+
+
 
 const cudOptions = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
 
@@ -15,7 +15,10 @@ const cudOptions = {headers: new HttpHeaders({'Content-Type': 'application/json'
 export class UsersService {
   // tslint:disable-next-line:no-inferrable-types
   private userUrl: string = '/api/users';
-  constructor(private http: HttpClient) {  }
+
+  constructor(private http: HttpClient) {
+
+  }
 
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.userUrl)
@@ -37,8 +40,8 @@ export class UsersService {
   }
 
   deleteUser(user: User | number): Observable<User> {
-    const id = typeof user === 'number' ? user : user.Id;
-    const url = `${this.userUrl}/${id}`;
+    const Id = typeof user === 'number' ? user : user.id;
+    const url = `${this.userUrl}/${Id}`;
 
     return this.http.delete<User>(url, cudOptions);
 

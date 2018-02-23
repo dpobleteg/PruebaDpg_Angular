@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 offset-md-1">
+      <h1 class="center">{{ h1Text }}</h1>
+      <form novalidate (ngSubmit)="submit()" #userForm="ngForm">
+        <div class="form-group">
+          <label for="username">Name</label>
+          <input type="text" class="form-control" id="username" name ="username" [(ngModel)]="user.Name" 
+          #username="ngModel" required/>
+          <div [hidden]="username.valid || username.pristine" style="color: firebrick">
+            El username no es valido
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="userlastName">Last Name</label>
+          <input type="text" class="form-control" id="userlastName" name ="userlastName" [(ngModel)]="user.LastName"
+            #userlastName="ngModel" required/>
+          <div [hidden]="userlastName.valid || userlastName.pristine" style="color: firebrick">
+            Apellido  no valido
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="useremail">email</label>
+          <input type="text" class="form-control" id="useremail" name ="useremail" [(ngModel)]="user.email"
+            #useremail="ngModel" required/>
+          <div [hidden]="useremail.valid || useremail.pristine" style="color: firebrick">
+            EMail no valido
+          </div>
+        </div>
+        <button [disabled]="!userForm.valid" class="btn btn-block btn-primary" type="submit" >{{submitText}}</button>
+        <a routerLink="/crud" class="btn btn-block btn-primary" >Volver al listado</a>
+      </form>
+    </div>
+  </div>
+</div>

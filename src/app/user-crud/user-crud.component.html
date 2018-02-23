@@ -1,3 +1,27 @@
-<p>
-  user-crud works!
-</p>
+<div class="col-md-12" >
+    <a routerLink="/users/add" class="btn float-right btn-warning" >Crear Usuario</a>
+
+    <table class="table">
+        <thead>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Mail</th>
+            <th>Opciones </th>
+        </thead>
+        <tbody *ngIf="users">
+            <tr *ngFor="let user of users">
+                <td>{{ user.id}}</td>
+                <td>{{ user.Name}}</td>
+                <td>{{ user.LastName}}</td>
+                <td>{{ user.email}}</td>
+                <td>
+                    <a [routerLink]="[ '/users', user.id, 'Detalle' ]" class="btn btn-info">Detalle</a>
+                    <a [routerLink]="[ '/users', user.id, 'Editar' ]" class="btn btn-primary">Editar</a>
+                    <button (click)="remove(user)" class="btn btn-danger">Eliminar</button>
+                    
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
