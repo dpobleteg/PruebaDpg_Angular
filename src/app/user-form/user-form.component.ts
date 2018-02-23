@@ -20,5 +20,4 @@ export class UserFormComponent {
   submit() {
     this.onSubmit.emit(this.user);
   }
-
 }
